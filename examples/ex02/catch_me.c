@@ -17,7 +17,7 @@ int catch_me(int (*try_action)(void), void (*catch_action)(int))
     signal(SIGBUS, &_on_catch); //10
 
     int ret = setjmp(env);
-    if (ret == 0 && 0)
+    if (ret == 0)
     {
         // try
         return try_action();
