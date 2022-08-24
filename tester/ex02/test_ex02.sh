@@ -1,14 +1,14 @@
 #!/bin/bash
 
-## ft_exception dash ex01 tester
+## ft_exception dash ex02 tester
 
 # # 현재 디렉토리로 복사
-# echo 'Copy files:'
-# cp ../ex00.c .
+echo 'Copy files:'
+cp ../../ex02/catch_me.c ./ex02.c
 
 # 컴파일 검사
 echo 'Compile test'
-if ! cc -Wall -Wextra -Werror ex01.c test_ex01.c -o test_generated
+if ! cc -Wall -Wextra -Werror ex02.c test_ex02.c -o test_generated
 then
     echo 'Does not compiled. KO :('
     exit 1

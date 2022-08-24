@@ -3,8 +3,8 @@
 ## ft_exception dash ex01 tester
 
 # # 현재 디렉토리로 복사
-# echo 'Copy files:'
-# cp ../ex00.c .
+echo 'Copy files:'
+cp ../../ex01/try_me.c ./ex01.c
 
 # 컴파일 검사
 echo 'Compile test'

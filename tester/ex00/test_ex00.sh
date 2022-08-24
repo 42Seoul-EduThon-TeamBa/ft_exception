@@ -1,7 +1,13 @@
 #!/bin/bash
 
+## ft_exception dash ex00 tester
+
+# # 현재 디렉토리로 복사
+echo 'Copy files:'
+cp ../../ex00/signal_practice.c ./ex00.c
+
 # Build
-gcc -Wall -Wextra -Werror -o test_generated signal_practice.c test_ex00.c
+gcc -Wall -Wextra -Werror -o test_generated ex00.c test_ex00.c
 if [ $? -ne 0 ]
 then
     echo "Compilation failed"
