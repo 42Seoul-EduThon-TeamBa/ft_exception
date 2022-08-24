@@ -7,8 +7,15 @@ echo 'Copy files:'
 cp ../../ex02/catch_me.c ./ex02.c
 
 # 컴파일 검사
-echo 'Compile test'
-if ! cc -Wall -Wextra -Werror ex02.c test_ex02.c -o test_generated
+echo 'Compile test #1'
+if ! cc -Wall -Wextra -Werror ex02.c test_ex02.c test_ex02_case00.c -o test_generated
+then
+    echo 'Does not compiled. KO :('
+    exit 1
+fi
+
+echo 'Compile test #2'
+if ! cc -Wall -Wextra -Werror ex02.c test_ex02.c test_ex02_case01.c -o test_generated2
 then
     echo 'Does not compiled. KO :('
     exit 1
@@ -25,7 +32,13 @@ idx=1
 for i in $ARR
 do
     ./test_generated $i
-    if [ $? -ne $i ]
+    if [ ! $? ]
+    then
+        echo "Program test $idx failed. KO :("
+        exit 1
+    fi
+    ./test_generated2 $i
+    if [ ! $? ]
     then
         echo "Program test $idx failed. KO :("
         exit 1
@@ -38,7 +51,13 @@ BAD_ARR='30 31'
 for i in $BAD_ARR
 do
     ./test_generated $i
-    if [ $? -ne $((128 + $i)) ]
+    if [ ! $? ]
+    then
+        echo "Program test $idx failed. KO :("
+        exit 1
+    fi
+    ./test_generated2 $i
+    if [ ! $? ]
     then
         echo "Program test $idx failed. KO :("
         exit 1

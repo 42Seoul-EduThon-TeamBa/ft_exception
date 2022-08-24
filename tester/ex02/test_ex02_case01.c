@@ -23,5 +23,6 @@ int try_function(void)
 
 void catch_function(int sig)
 {
+    (void)&sig;
     res = 0;
 }
