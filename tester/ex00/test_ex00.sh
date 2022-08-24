@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build
-gcc -Wall -Wextra -Werror -o test_generated ex00.c test_ex00.c
+gcc -Wall -Wextra -Werror -o test_generated signal_practice.c test_ex00.c
 if [ $? -ne 0 ]
 then
     echo "Compilation failed"
@@ -14,7 +14,7 @@ function timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
 
 function test_case {
     echo "Test $1"
-    timeout 5s ./test_generated $3 > /dev/null
+    timeout 5s ./test_generated $3
     if [ $? -ne $2 ]
     then
         echo "Test $1 KO :("
