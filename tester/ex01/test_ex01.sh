@@ -19,8 +19,7 @@ fi
 # 8: Floating point error
 # 10: Bus error
 # 11: Segmentation fault
-# 13: Broken pipe
-ARR='6 8 10 11 13'
+ARR='6 8 10 11'
 idx=1
 for i in $ARR
 do
