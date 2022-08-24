@@ -4,7 +4,7 @@
 static void on_fpe(int sig)
 {
     (void)sig;
-    //exit(42);
+    exit(42);
 }
 
 void register_fpe()
