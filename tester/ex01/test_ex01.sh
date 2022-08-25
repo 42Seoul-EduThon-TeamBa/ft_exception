@@ -15,29 +15,14 @@ then
 fi
 
 # 프로그램 검사
-# 6: Abord
 # 8: Floating point error
-# 10: Bus error
 # 11: Segmentation fault
-ARR='6 8 10 11'
+ARR='8 11'
 idx=1
 for i in $ARR
 do
     ./test_generated $i
     if [ $? -ne $i ]
-    then
-        echo "Program test $idx failed. KO :("
-        exit 1
-    fi
-    echo "Program test $((idx++)). OK :)"
-done
-# 30: User1
-# 31: User2
-BAD_ARR='30 31'
-for i in $BAD_ARR
-do
-    ./test_generated $i
-    if [ $? -ne $((128 + $i)) ]
     then
         echo "Program test $idx failed. KO :("
         exit 1

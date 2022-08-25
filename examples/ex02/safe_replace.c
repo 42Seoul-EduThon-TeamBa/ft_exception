@@ -11,19 +11,26 @@ static void on_signal(int sig)
 int safe_replace(char* str, char oldchar, char newchar)
 {
     int i;
+    int res;
 
     signal(SIGSEGV, on_signal);
     signal(SIGBUS, on_signal);
     if (setjmp(env) != 0)
     {
-        return 0;
+        res = 0;
     }
-    for (i = 0; str[i] != '\0'; i++)
+    else
     {
-        if (str[i] == oldchar)
+        for (i = 0; str[i] != '\0'; i++)
         {
-            str[i] = newchar;
+            if (str[i] == oldchar)
+            {
+                str[i] = newchar;
+            }
         }
+        res = 1;
     }
-    return 1;
+    signal(SIGSEGV, SIG_DFL);
+    signal(SIGBUS, SIG_DFL);
+    return res;
 }
