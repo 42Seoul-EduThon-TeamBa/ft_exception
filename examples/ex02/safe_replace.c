@@ -15,12 +15,9 @@ int safe_replace(char* str, char oldchar, char newchar)
 
     signal(SIGSEGV, on_signal);
     signal(SIGBUS, on_signal);
-    if (setjmp(env) != 0)
+    if (setjmp(env) == 0)
     {
-        res = 0;
-    }
-    else
-    {
+        // try
         for (i = 0; str[i] != '\0'; i++)
         {
             if (str[i] == oldchar)
@@ -29,6 +26,11 @@ int safe_replace(char* str, char oldchar, char newchar)
             }
         }
         res = 1;
+    }
+    else
+    {
+        // catch
+        res = 0;
     }
     signal(SIGSEGV, SIG_DFL);
     signal(SIGBUS, SIG_DFL);
